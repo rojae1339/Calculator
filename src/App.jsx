@@ -94,7 +94,7 @@ function App() {
     }, [result]);
 
     
-    //todo 각 오퍼레이터 별 연산 기능 넣고 button컴포넌트 onClick수정
+    //todo 각 오퍼레이터 별 연산 기능 넣고 button컴포넌트 onClick수정해야됨
     
     const onClickNumber = (e) => {
         const val = e.currentTarget.value
