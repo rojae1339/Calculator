@@ -14,6 +14,11 @@ simple calculator.
    
 6. percentage operator.
 
+
+![1](https://github.com/user-attachments/assets/8defe9c0-1e31-4b8e-88b9-feb38451df76)
+
+
+
 # what I felt after this 1 wwek of project
 
 ## I tend to just start it.
