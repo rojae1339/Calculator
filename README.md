@@ -63,3 +63,14 @@ switch(a) {
   }
 }
 ```
+
+Not Like
+```js
+switch(a) {
+  case 1: 
+    const var1 = "x"; //Eslint Error
+    const var2 = 2; //Eslint Error
+    ...
+    break;
+}
+```
