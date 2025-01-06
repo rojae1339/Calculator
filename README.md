@@ -20,11 +20,13 @@ simple calculator.
 But after do this project, I felt more like, "I should prefer to make class abtract specifications".
 
 There's a lot of code that better do refactoring, but too much code is kinda "spaghetti".
+
 It seems more harder that to do refactor these codes after "just do it"
 
 ## I should search more about knowledges.
 
 As I know, JavaScript is using deciaml floating point numbers basically.
+
 And I know that decimal floating point numbers have a lot of problems for doing operation.
 
 Final moment of this project, I was too much confused to make code for "calculate split the string, string to number, number to string..".
