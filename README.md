@@ -4,14 +4,15 @@ simple calculator.
 
 1. multiply, divide, subtract, addition operators.
 
+2. change sign operator.
 
+3. add decimal point operator.
 
-2. change sign operator
+4. operation operator.
 
-4. add decimal point operator
-
-5. operation operator
-
+5. backspace, earase all (`C`), earase a part (`CE`).
+   
+6. percentage operator.
 
 # what I felt after this 1 wwek of project
 
