@@ -53,7 +53,7 @@ Just cover with `{ }` at a case which you want to declare some variable in that 
 
 Like
 
-```
+```js
 switch(a) {
   case 1: {
     const var1 = "x";
