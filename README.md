@@ -4,18 +4,21 @@ simple calculator.
 
 1. multiply, divide, subtract, addition operators.
 
-2. change sign operator.
+2. operation operator.
+![1](https://github.com/user-attachments/assets/ac136e3a-5c01-41d2-a594-5caa08185857)
 
-3. add decimal point operator.
+3. change sign operator.
+![2](https://github.com/user-attachments/assets/4ac80568-9f9b-4a95-882f-7982c8ee78f9)
 
-4. operation operator.
+4. add decimal point operator.
+![3](https://github.com/user-attachments/assets/4b89b42a-71c1-4239-91a0-40667e433715)
 
 5. backspace, earase all (`C`), earase a part (`CE`).
-   
+   ![4](https://github.com/user-attachments/assets/52be4b88-aef7-47e3-b570-af251e457bbe)
+
 6. percentage operator.
+![5](https://github.com/user-attachments/assets/801406f1-b7bf-4374-8e2d-9ba7f127b6c5)
 
-
-![1](https://github.com/user-attachments/assets/8defe9c0-1e31-4b8e-88b9-feb38451df76)
 
 
 
