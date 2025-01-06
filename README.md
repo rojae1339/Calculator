@@ -4,14 +4,16 @@ simple calculator.
 
 1. multiply, divide, subtract, addition operators.
 
+
+
 2. change sign operator
 
-3. add decimal point operator
+4. add decimal point operator
 
-4. operation operator
+5. operation operator
 
 
-# what I felt after this 1wwek of project
+# what I felt after this 1 wwek of project
 
 ## I tend to just start it.
 
@@ -22,3 +24,11 @@ It seems more harder that to do refactor these codes after "just do it"
 
 ## I should search more about knowledges.
 
+As I know, JavaScript is using deciaml floating point numbers basically.
+And I know that decimal floating point numbers have a lot of problems for doing operation.
+
+Final moment of this project, I was too much confused to make code for "calculate split the string, string to number, number to string..".
+
+and I searched about it, and there's new JS type called "BigInt".
+
+I should use that from the beginning.
