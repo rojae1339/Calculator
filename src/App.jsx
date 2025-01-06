@@ -48,7 +48,7 @@ const deleteZeroFromResult = (result) => {
 
     let count = 0;
 
-    for (let i = result.length-1; i >= 0 ; i--) {
+    for (let i = result.length - 1; i >= 0; i--) {
 
         if (result[i] === "0") {
             count++;
@@ -61,6 +61,10 @@ const deleteZeroFromResult = (result) => {
     return slice;
 }
 
+const doOperation = (operatorType) => {
+
+}
+
 function App() {
 
     const operatorsYnums = [
@@ -71,42 +75,6 @@ function App() {
         "1", "2", "3", "+",
         "<sup>+</sup>/<sub>-</sub>", "0", ".", "="
     ];
-
-    const operatorType = [
-        {
-            0: "remain"
-        },
-        {
-            1: "delete_current"
-        },
-        {
-            2: "delete_all"
-        },
-        {
-            3: "delete_char"
-        },
-        {
-            4: "denominator"
-        },
-        {
-            5: "square"
-        },
-        {
-            6: "sqrt"
-        },
-        {
-            7: "divide"
-        },
-        {
-            20: "alter_sign"
-        },
-        {
-            22: "add_decimal_point"
-        },
-        {
-            23: "calculate"
-        }
-    ]
 
     const [result, setResult] = useState("0");
     let [numWithOperator, setNumWithOperator] = useState("");
@@ -292,7 +260,7 @@ function App() {
                     const withoutCommaResult = makeResultWithoutComma(result);
                     const arr = [];
 
-                    for (let i = 0; i < withoutCommaResult.length -1; i++) {
+                    for (let i = 0; i < withoutCommaResult.length - 1; i++) {
 
                         arr.push(withoutCommaResult[i]);
                     }
@@ -306,7 +274,7 @@ function App() {
                 }
                 break;
 
-            // Divide operator
+            //todo Divide operator
             case 7:
                 if (numWithOperator === "") {
                     setNumWithOperator(result + " " + eventValue);
@@ -315,6 +283,13 @@ function App() {
                 } else if (numWithOperSplit[1] !== eventValue) {
 
                     const oper = numWithOperSplit[1];
+
+                    if (numWithOperator.includes("=")) {
+                        setNumWithOperator(`${result} ÷ `);
+                        setIsNewInput(true);
+                        break;
+                    }
+
                     //todo 연산 기호 바꿀시 연산후 기호 변경
                     if (!isNewInput) {
                         switch (operatorsYnums.indexOf(oper)) {
@@ -352,7 +327,7 @@ function App() {
 
                 break;
 
-            // Multiply operator
+            //todo Multiply operator
             case 11:
                 if (numWithOperator === "") {
                     setNumWithOperator(result + " " + eventValue);
@@ -362,6 +337,13 @@ function App() {
                 } else if (numWithOperSplit[1] !== eventValue) {
 
                     const oper = numWithOperSplit[1];
+
+                    if (numWithOperator.includes("=")) {
+                        setNumWithOperator(`${result} × `);
+                        setIsNewInput(true);
+                        break;
+                    }
+
                     //todo 연산 기호 바꿀시 연산후 기호 변경
                     if (!isNewInput) {
                         switch (operatorsYnums.indexOf(oper)) {
@@ -386,7 +368,7 @@ function App() {
                         const [changeSplitNum, splitDecimalCount] = countDecimalToPairArray(splitNum);
                         const [changeNumRes, numResDecimalCount] = countDecimalToPairArray(numRes);
 
-                        const [numIntPart, numDecimalPart] = makeNumDecimal(changeSplitNum / changeNumRes, splitDecimalCount + numResDecimalCount).toString().split('.');
+                        const [numIntPart, numDecimalPart] = makeNumDecimal(changeSplitNum * changeNumRes, splitDecimalCount + numResDecimalCount).toString().split('.');
 
                         const multiple = `${makeResultWithComma(numIntPart.toString())}${numDecimalPart === undefined ? "" : `.${numDecimalPart}`}`;
 
@@ -400,24 +382,175 @@ function App() {
 
             //todo subtract operator
             case 15:
-                break
+                if (numWithOperator === "") {
+                    setNumWithOperator(result + " " + eventValue);
+                    setIsNewInput(true);
+                    break;
+
+                } else if (numWithOperSplit[1] !== eventValue) {
+
+                    const oper = numWithOperSplit[1];
+
+                    if (numWithOperator.includes("=")) {
+                        setNumWithOperator(`${result} - `);
+                        setIsNewInput(true);
+                        break;
+                    }
+
+                    //todo 연산 기호 바꿀시 연산후 기호 변경
+                    if (!isNewInput) {
+                        switch (operatorsYnums.indexOf(oper)) {
+                            case 11:
+                                break
+                            case 15:
+                                break
+                            case 19:
+                                break
+                        }
+                    }
+
+                    setNumWithOperator(numWithOperSplit[0] + " " + "-")
+                    setIsNewInput(true);
+                } else {
+                    // 2*2*2*2*2*2*... 같이 연산 반복할 시 무한연산
+                    let numRes = Number(resultWithoutComma);
+                    let splitNum = Number(makeResultWithoutComma(numWithOperSplit[0]));
+
+                    if (numWithOperSplit.length < 3 && numWithOperator.includes("-")) {
+
+                        const [changeSplitNum, splitDecimalCount] = countDecimalToPairArray(splitNum);
+                        const [changeNumRes, numResDecimalCount] = countDecimalToPairArray(numRes);
+
+                        const [numIntPart, numDecimalPart] = makeNumDecimal(changeSplitNum - changeNumRes, splitDecimalCount + numResDecimalCount).toString().split('.');
+
+                        const multiple = `${makeResultWithComma(numIntPart.toString())}${numDecimalPart === undefined ? "" : `.${numDecimalPart}`}`;
+
+                        setResult(multiple);
+                        setNumWithOperator(multiple + " " + eventValue);
+                        setIsNewInput(true);
+                        break;
+                    }
+                }
+                break;
 
             //todo addition operator
             case 19:
-                break
+                if (numWithOperator === "") {
+                    setNumWithOperator(result + " " + eventValue);
+                    setIsNewInput(true);
+                    break;
 
-            //todo change sign operator
-            case 20:
+                } else if (numWithOperSplit[1] !== eventValue) {
+
+                    const oper = numWithOperSplit[1];
+
+                    if (numWithOperator.includes("=")) {
+                        setNumWithOperator(`${result} + `);
+                        setIsNewInput(true);
+                        break;
+                    }
+
+                    //todo 연산 기호 바꿀시 연산후 기호 변경
+                    if (!isNewInput) {
+                        switch (operatorsYnums.indexOf(oper)) {
+                            case 11:
+                                break
+                            case 15:
+                                break
+                            case 19:
+                                break
+                        }
+                    }
+
+                    setNumWithOperator(numWithOperSplit[0] + " " + "+")
+                    setIsNewInput(true);
+                } else {
+                    // 2*2*2*2*2*2*... 같이 연산 반복할 시 무한연산
+                    let numRes = Number(resultWithoutComma);
+                    let splitNum = Number(makeResultWithoutComma(numWithOperSplit[0]));
+
+                    if (numWithOperSplit.length < 3 && numWithOperator.includes("+")) {
+
+                        const [changeSplitNum, splitDecimalCount] = countDecimalToPairArray(splitNum);
+                        const [changeNumRes, numResDecimalCount] = countDecimalToPairArray(numRes);
+
+                        const [numIntPart, numDecimalPart] = makeNumDecimal(changeSplitNum + changeNumRes, splitDecimalCount + numResDecimalCount).toString().split('.');
+
+                        const multiple = `${makeResultWithComma(numIntPart.toString())}${numDecimalPart === undefined ? "" : `.${numDecimalPart}`}`;
+
+                        setResult(multiple);
+                        setNumWithOperator(multiple + " " + eventValue);
+                        setIsNewInput(true);
+                        break;
+                    }
+                }
                 break;
 
-            //todo decimal point operator
+            //change sign operator
+            case 20:
+                if (Number(result) < 0) {
+                    setResult(result.slice(-(result.length - 1)))
+                    break;
+                }
+                setResult("-" + result);
+                break;
+
+            //decimal point operator
             case 22:
+                setResult(result + ".")
                 break
 
-            //todo operation operator
-            case 23:
-                if (numWithOperSplit.length)
+            //operation operator
+            case 23: {
+                if (numWithOperator === "") {
                     break;
+                }
+
+                const numRes = Number(result);
+                const numNumWithOper = Number(numWithOperSplit[0]);
+
+                switch (numWithOperSplit[1]) {
+                    case "÷": {
+                        if (numRes === 0) {
+                            setResult("Error: Division by zero");
+                            setNumWithOperator("");
+                            setIsNewInput(true);
+                            break;
+                        }
+
+                        const divide = numNumWithOper / numRes
+                        setResult(divide.toString());
+                        setNumWithOperator(`${numRes} ÷ ${numNumWithOper} = `);
+                        setIsNewInput(true)
+                        break;
+                    }
+
+                    case "×" : {
+                        const multi = numNumWithOper * numRes;
+                        setResult(multi.toString());
+                        setNumWithOperator(`${numRes} × ${numNumWithOper} = `);
+                        setIsNewInput(true)
+                        break;
+                    }
+
+                    case "-": {
+                        const subtract = numNumWithOper - numRes;
+                        setResult(subtract.toString());
+                        setNumWithOperator(`${numRes} - ${numNumWithOper} = `);
+                        setIsNewInput(true)
+                        break;
+                    }
+
+                    case "+": {
+                        const addition = numNumWithOper + numRes;
+                        setResult(addition.toString());
+                        setNumWithOperator(`${numRes} + ${numNumWithOper} = `);
+                        setIsNewInput(true)
+                        break;
+                    }
+                }
+                break;
+            }
         }
     }
 
