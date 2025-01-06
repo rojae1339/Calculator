@@ -1,8 +1,24 @@
-# React + Vite
+# Calculator project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+simple calculator.
 
-Currently, two official plugins are available:
+1. multiply, divide, subtract, addition operators.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. change sign operator
+
+3. add decimal point operator
+
+4. operation operator
+
+
+# what I felt after this 1wwek of project
+
+## I tend to just start it.
+
+But after do this project, I felt more like, "I should prefer to make class abtract specifications".
+
+There's a lot of code that better do refactoring, but too much code is kinda "spaghetti".
+It seems more harder that to do refactor these codes after "just do it"
+
+## I should search more about knowledges.
+
