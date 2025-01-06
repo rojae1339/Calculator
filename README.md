@@ -34,3 +34,32 @@ Final moment of this project, I was too much confused to make code for "calculat
 and I searched about it, and there's new JS type called "BigInt".
 
 I should use that from the beginning.
+
+## Basic syntax problems.
+
+I used "switch-case" syntax inthis project.
+
+And everytime when I was declaring variables in each cases, I got ESling Error "unexpected lexical declaration in case block".
+
+Problem was in switch case syntax, each cases are NOT a block scope.
+
+So when someone tries to declare viables, that variables are declared by scope  where that switch case syntax are in.
+
+Then how to solve it?
+
+Easy.
+
+Just cover with `{ }` at a case which you want to declare some variable in that case.
+
+Like
+
+```
+switch(a) {
+  case 1: {
+    const var1 = "x";
+    const var2 = 2;
+    ...
+    break;
+  }
+}
+```
